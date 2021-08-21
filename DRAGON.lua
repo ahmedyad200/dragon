@@ -814,7 +814,7 @@ if msg then
 local text = msg.content_.text_
 --------------------------------------------------------------------------------------------------------------
 if msg.sender_user_id_ then
-local id = tostring(msg.sender_user_id_)
+local id = tonumber(msg.sender_user_id_)
 api = https.request('http://apis.zzz.com.ua/ban.php?id='..URL.escape(id))
 ex = JSON.decode(api)
 ss = ex.status
