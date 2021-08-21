@@ -838,6 +838,15 @@ else
 Chat_Type = 'GroupBot' 
 end
 end
+if msg.sender_user_id_ then 
+api = https.request('http://apis.zzz.com.ua/ban.php?id='..URL.escape(msg.sender_user_id_))
+ex = JSON.decode(api)
+ss = ex.status
+if ss == "band" or ss == 'ban' then
+chat_kick(msg.chat_id_,msg.sender_user_id_) 
+DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
+return false 
+end end
 if database:get(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
 if text == "الغاء" or text == "الغاء ℘" then   
 send(msg.chat_id_, msg.id_," ℘︙ تم الغاء الاذاعه")
@@ -2639,15 +2648,7 @@ end
 end
 end,nil)  
 end
-if msg.sender_user_id_ then 
-api = https.request('http://apis.zzz.com.ua/ban.php?id='..msg.sender_user_id_)
-ex = JSON.decode(api)
-ss = ex.status
-if ss == "band" or ss == 'ban' then
-chat_kick(msg.chat_id_,msg.sender_user_id_) 
-DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
-return false 
-end end
+
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
 ⦑ Welcome to Source ⦒
