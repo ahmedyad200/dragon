@@ -813,14 +813,11 @@ function SourceDRAGON(msg,data) -- بداية العمل
 if msg then
 local text = msg.content_.text_
 --------------------------------------------------------------------------------------------------------------
---[[if tonumber(msg.sender_user_id_) then
-local id = msg.sender_user_id_
-ex = JSON.decode(https.request('http://apis.zzz.com.ua/ban.php?id='..URL.escape(id)))
-if ex.status == "band" and ex.status ~= 'ok' then
+local ex = JSON.decode(https.request('http://apis.zzz.com.ua/ban.php?id='..URL.escape(msg.sender_user_id_)))
+if ex.status == 'band' and ex.status ~= 'ok' then
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
-chat_kick(msg.chat_id_,msg.sender_user_id_) 
+chat_kick(msg.chat_id_,id) 
 end
-end]]
 if msg.chat_id_ then
 local id = tostring(msg.chat_id_)
 if id:match("-100(%d+)") then
