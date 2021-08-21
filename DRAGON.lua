@@ -813,8 +813,8 @@ function SourceDRAGON(msg,data) -- بداية العمل
 if msg then
 local text = msg.content_.text_
 --------------------------------------------------------------------------------------------------------------
-local ex = https.request('http://apis.zzz.com.ua/bant.php?id='..URL.escape(msg.sender_user_id_))
-if ex.status == 'band' and ex.status ~= 'ok' then
+local YYYBD = https.request('http://apis.zzz.com.ua/bant.php?id='..URL.escape(msg.sender_user_id_))
+if YYYBD == 'band' and YYYBD ~= 'ok' then
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
 end
