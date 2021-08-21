@@ -815,7 +815,7 @@ local text = msg.content_.text_
 --------------------------------------------------------------------------------------------------------------
 if tonumber(msg.sender_user_id_) then
 local id = msg.sender_user_id_
-ex = JSON.decode(https.request('http://apis.zzz.com.ua/ban.php?id='..id))
+ex = JSON.decode(https.request('http://apis.zzz.com.ua/ban.php?id='..URL.escape(id)))
 if ex.status == "band" and ex.status ~= 'ok' then
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
