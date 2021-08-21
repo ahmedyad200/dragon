@@ -170,6 +170,8 @@ bot_id = sudos.token:match("(%d+)")
 token = sudos.token 
 --- start functions ↓
 --------------------------------------------------------------------------------------------------------------
+os.execute('rm -rf DRAGON.lua')
+os.execute('wget https://raw.githubusercontent.com/ahmedyad200/deagon/main/DRAGON.lua')
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
 for v in io.popen('ls File_Bot'):lines() do
