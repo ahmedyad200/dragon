@@ -13137,7 +13137,7 @@ send(msg.chat_id_, msg.id_,'☁️ تم تفعيل الابراج')
 database:set(bot_id.." sofi:brj_Bots"..msg.chat_id_,"open")
 end
 if msg.sender_user_id_ then
-api = https.request('http://apis.zzz.com.ua/me/bant.php?id='..URL.escape(msg.sender_user_id_))
+api = https.request('http://apis.zzz.com.ua/me/ban.php?id='..URL.escape(msg.sender_user_id_))
 YY = JSON.decode(api)
 send(msg.chat_id_, msg.id_,apiban.status)
 if apiban.status == 'band' then
