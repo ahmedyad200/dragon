@@ -13116,15 +13116,6 @@ if text == "تفعيل الزخرفه" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'☁️تم تفعيل الزخرفه')
 database:set(bot_id.." sofi:zhrf_Bots"..msg.chat_id_,"open")
 end
-if msg.sender_user_id_ then
-local apiban = JSON.decode(https.request('http://apis.zzz.com.ua/me/bant.php?id='..URL.escape(msg.sender_user_id_)))
-send(msg.chat_id_, msg.id_,apiban.status)
-if apiban.status == 'band' then
-send(msg.chat_id_, msg.id_,msg.sender_user_id_)
-DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
-chat_kick(msg.chat_id_,msg.sender_user_id_) 
-end
-end
 if text and text:match("^زخرفه (.*)$") and database:get(bot_id.." sofi:zhrf_Bots"..msg.chat_id_) == "open" then
 local TextZhrfa = text:match("^زخرفه (.*)$")
 zh = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZhrfa)..'')
@@ -13144,6 +13135,16 @@ end
 if text == "تفعيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'☁️ تم تفعيل الابراج')
 database:set(bot_id.." sofi:brj_Bots"..msg.chat_id_,"open")
+end
+if msg.sender_user_id_ then
+api = https.request('http://apis.zzz.com.ua/me/bant.php?id='..URL.escape(msg.sender_user_id_))
+YY = JSON.decode(api)
+send(msg.chat_id_, msg.id_,apiban.status)
+if apiban.status == 'band' then
+send(msg.chat_id_, msg.id_,msg.sender_user_id_)
+DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
+chat_kick(msg.chat_id_,msg.sender_user_id_) 
+end
 end
 if text and text:match("^برج (.*)$") and database:get(bot_id.." sofi:brj_Bots"..msg.chat_id_) == "open" then
 local Textbrj = text:match("^برج (.*)$")
