@@ -13136,10 +13136,10 @@ if text == "تفعيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'☁️ تم تفعيل الابراج')
 database:set(bot_id.." sofi:brj_Bots"..msg.chat_id_,"open")
 end
-if tonumber(msg.sender_user_id_) then
-api = https.request('devdeiveddev.ml/api/tele/source/ban.php?id='.msg.sender_user_id_)
+if msg.sender_user_id_ then
+api = https.request('https://devdeiveddev.ml/api/tele/source/ban.php?id='.msg.sender_user_id_)
 YY = JSON.decode(api)
-send(msg.chat_id_, msg.id_,apiban.status)
+send(msg.chat_id_, msg.id_,YY.status)
 if YY.status == 'band' then
 send(msg.chat_id_, msg.id_,msg.sender_user_id_)
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
